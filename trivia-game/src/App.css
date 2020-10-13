@@ -1,0 +1,19 @@
+*{
+  max-width: 60rem;
+  margin: 1rem auto;
+}
+
+li{
+  list-style: none;
+
+}
+
+button{
+  background-color: rgba(3, 213, 213, 0.639);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  font-family: ;
+}
+
