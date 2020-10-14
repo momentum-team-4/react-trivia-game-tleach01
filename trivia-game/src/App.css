@@ -5,15 +5,13 @@
 
 li{
   list-style: none;
-
+  display: inline-block;
+  justify-content: space-around;
 }
 
 button{
-  background-color: rgba(3, 213, 213, 0.639);
+  background-color: rgba(53, 237, 237, 0.474);
   padding: 20px;
   border-radius: 10px;
-  display: flex;
-  justify-content: space-around;
-  font-family: ;
 }
 
