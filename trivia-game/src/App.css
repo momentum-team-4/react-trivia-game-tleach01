@@ -2,6 +2,9 @@
   max-width: 60rem;
   margin: 1rem auto;
 }
+h1, h2 {
+  text-align: center;
+}
 
 li{
   list-style: none;
@@ -9,9 +12,31 @@ li{
   justify-content: space-around;
 }
 
-button{
-  background-color: rgba(53, 237, 237, 0.474);
+.categoryBtn{
+  background-color: rgb(40, 187, 255);
   padding: 20px;
   border-radius: 10px;
+  font-weight: bolder;
+  font-size: larger;
+  width: 200px;
+  height: 150px;
 }
 
+.nextBtn{
+  background-color: rgba(21, 111, 245, 0.652);
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: bolder;
+}
+
+.backBtn{
+  background-color: rgba(21, 245, 129, 0.652);
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: bolder;
+}
+
+.answers{
+  background-color: rgba(107, 240, 255, 0.68);
+  padding: 10px;
+}

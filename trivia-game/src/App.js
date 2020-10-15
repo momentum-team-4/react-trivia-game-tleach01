@@ -21,7 +21,7 @@ function App () {
       <div>
         <QuestionData category={pickedTriviaCategory} />
         <div>
-          <button className='categoryBtn' onClick={() => setPickedTriviaCategory(null)}>
+          <button className='backBtn' onClick={() => setPickedTriviaCategory(null)}>
             Back to all categories!
           </button>
         </div>
@@ -32,7 +32,7 @@ function App () {
   return (
     <div className='triviaApp'>
       <h1>Trivia Game</h1>
-      <h2>Pick a category to get started!</h2>
+      <h2><em>Pick a category to get started!</em></h2>
       <ul>
         {triviaCategories.map(category => (
           <li key={category.id}>

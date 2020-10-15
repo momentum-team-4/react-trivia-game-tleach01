@@ -22,7 +22,8 @@ export default function QuestionData (props) {
         const questions = data.results.map(question => {
           return {
             question: question.question,
-            correct_answer: question.correct_answer
+            correct_answer: question.correct_answer,
+            incorrect_answers: question.incorrect_answers
           }
         })
         setTriviaQuestions(questions)
@@ -37,17 +38,21 @@ export default function QuestionData (props) {
   return (
     <div className='QuestionData'>
       <h2>{category.name}</h2>
-
       {question && (
-        <div> Question: {question.question} </div>
+        <div>
+          <div> Question: {question.question} </div>
+          <div className='answers'>
+            <li>{question.correct_answer} </li>
+          </div>
+          <div className='answers'>
+            <li>{question.incorrect_answers}</li>
+          </div>
+        </div>
       )}
 
       <div>
-        {currentIndex > 0 &&
-          <button onClick={() => setCurrentIndex(currentIndex - 1)}>Previous Question</button>}
-        {' '}
         {currentIndex < triviaQuestions.length - 1 &&
-          <button onClick={() => setCurrentIndex(currentIndex + 1)}>Next Question</button>}
+          <button className='nextBtn' onClick={() => setCurrentIndex(currentIndex + 1)}>Next Question</button>}
       </div>
 
     </div>
