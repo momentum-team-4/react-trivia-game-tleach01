@@ -1,49 +1,65 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './App.css'
-import QuestionData from './components/QuestionData'
+import Trivia from './components/Trivia'
 
-function App () {
-  const [triviaCategories, setTriviaCategories] = useState([])
-  const [pickedTriviaCategory, setPickedTriviaCategory] = useState(null)
+class App extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      pickedCategory: null,
+      categories: []
+    }
+  }
 
-  useEffect(() => {
+  componentDidMount () {
     fetch('https://opentdb.com/api_category.php')
       .then(response => response.json())
       .then(data => {
-        console.log(data.trivia_categories)
-
-        setTriviaCategories(data.trivia_categories)
+        this.setState({ categories: data.trivia_categories })
       })
-  }, [])
+  }
 
-  if (pickedTriviaCategory) {
-    return (
-      <div>
-        <QuestionData category={pickedTriviaCategory} />
+  clearPicked () {
+    this.setState({ pickedCategory: null })
+  }
+
+  render () {
+    const categories = this.state.categories
+    let triviaApp
+    if (this.state.pickedCategory !== null) {
+      triviaApp = (
         <div>
-          <button className='backBtn' onClick={() => setPickedTriviaCategory(null)}>
-            Back to all categories!
-          </button>
+          <Trivia
+            questions={this.state.questions}
+            category={this.state.pickedCategory}
+            handleBack={() => this.clearPicked()}
+          />
         </div>
+      )
+    } else {
+      triviaApp = (
+        <div>
+          <h1> Trivia Game </h1>
+          <h2>Pick a category to start!</h2>
+          <ul className='categories'>
+            {categories.map(category => (
+              <li key={category.id}>
+                <button className='categoryBtn' onClick={() => this.setState({ pickedCategory: category })}> 
+                  <strong>{category.name}</strong>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    return (
+      <div className='triviaApp'>
+        {triviaApp}
       </div>
     )
   }
-
-  return (
-    <div className='triviaApp'>
-      <h1>Trivia Game</h1>
-      <h2><em>Pick a category to get started!</em></h2>
-      <ul>
-        {triviaCategories.map(category => (
-          <li key={category.id}>
-            <button className='categoryBtn' onClick={() => setPickedTriviaCategory(category)}>
-              {category.name}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
 }
 
 export default App

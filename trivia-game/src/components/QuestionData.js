@@ -1,60 +1,43 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 // category
-// type
-// difficulty
 // question
 // correct_answer
 // incorrect_answers
 
-export default function QuestionData (props) {
-  const { category } = props
-  const [triviaQuestions, setTriviaQuestions] = useState([])
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    setTriviaQuestions([])
-    if (!category) { return }
-    fetch('https://opentdb.com/api.php?amount=10&category=' + category.id)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        const questions = data.results.map(question => {
-          return {
-            question: question.question,
-            correct_answer: question.correct_answer,
-            incorrect_answers: question.incorrect_answers
-          }
-        })
-        setTriviaQuestions(questions)
-      })
-  }, [category])
-
-  let question
-  if (triviaQuestions.length > 0) {
-    question = triviaQuestions[currentIndex]
+class Question extends React.Component {
+  shouldComponentUpdate (nextProps) {
+    if (this.props.question === nextProps.question) {
+      return false
+    }
+    return true
   }
 
-  return (
-    <div className='QuestionData'>
-      <h2>{category.name}</h2>
-      {question && (
+  render () {
+    const { question, checkAnswer } = this.props
+    let answers = []
+    answers.push(question.correct_answer)
+    answers = answers.concat(question.incorrect_answers)
+
+    return (
+      <div className='question'>
         <div>
-          <div> Question: {question.question} </div>
-          <div className='answers'>
-            <li>{question.correct_answer} </li>
-          </div>
-          <div className='answers'>
-            <li>{question.incorrect_answers}</li>
-          </div>
+          <h2 dangerouslySetInnerHTML={{ __html: question.question }} />
         </div>
-      )}
-
-      <div>
-        {currentIndex < triviaQuestions.length - 1 &&
-          <button className='nextBtn' onClick={() => setCurrentIndex(currentIndex + 1)}>Next Question</button>}
+        <ul>
+          {answers.map(answer => (
+            <li key={answer}>
+              <button
+                className='answers'
+                onClick={() => checkAnswer(answer === question.correct_answer)}
+                dangerouslySetInnerHTML={{ __html: answer }}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
-
-    </div>
-  )
+    )
+  }
 }
+
+export default Question
