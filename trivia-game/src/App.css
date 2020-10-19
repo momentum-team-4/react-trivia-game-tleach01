@@ -1,9 +1,30 @@
 *{
-  max-width: 60rem;
-  margin: 1rem auto;
+ margin: 1rem auto;
+ 
 }
-h1, h2 {
+
+h1{
   text-align: center;
+  padding: 15px;
+  background-color: rgba(44, 116, 249, 0.796);
+  border-radius: 20px;
+  color: azure;
+  text-decoration: darkblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 3rem;
+}
+h2{
+  text-align: center;
+  color: azure;
+  font-weight: bolder;
+  font-size: 2.5rem;
+}
+
+body{
+background-image: url(https://wallpapercave.com/wp/wp2633736.png);
+ background-repeat: no-repeat;
+ background-size: cover;
+ padding: 10px;
 }
 
 li{
@@ -14,12 +35,16 @@ li{
 
 .categoryBtn{
   background-color: rgb(40, 187, 255);
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
   font-weight: bolder;
-  font-size: larger;
-  width: 200px;
-  height: 150px;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 225px;
+  height: 175px;
+  box-shadow: 0px 8px 12px 0px rgb(82, 82, 82);
+  display: grid;
+  
 }
 
 .nextBtn{
@@ -34,11 +59,39 @@ li{
   padding: 20px;
   border-radius: 10px;
   font-weight: bolder;
+  display: grid;
+  align-items: center;
+}
+
+.nextBtn{
+  display: grid;
+  align-items: center;
+}
+
+.nextBtn:hover, .backBtn:hover, .again:hover, .answers:hover{
+    font-size: 100%;
+    cursor: pointer;
+    color: aliceblue;
+    font-size: 1rem;
+  
+}
+
+.categoryBtn:hover{
+  cursor: pointer;
 }
 
 .answers{
-  background-color: rgba(107, 240, 255, 0.68);
-  padding: 10px;
-  justify-items: center;
+  background-color: rgb(0, 224, 249);
+  padding: 20px;
+  display: grid;
   border-radius: 10px;
+  font-weight: bolder;
+  font-size: large;
+  box-shadow: 0px 3px 3px 0px rgba(205, 205, 205, 0.262);
+
+}
+
+.question, .correct, .wrong, .score, .again{
+  color: azure;
+  font-size: xx-large;
 }

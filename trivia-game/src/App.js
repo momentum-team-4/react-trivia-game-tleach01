@@ -39,7 +39,7 @@ class App extends React.Component {
     } else {
       triviaApp = (
         <div>
-          <h1> Trivia Game </h1>
+          <h1> TRIVIA GAME  </h1>
           <h2>Pick a category to start!</h2>
           <ul className='categories'>
             {categories.map(category => (

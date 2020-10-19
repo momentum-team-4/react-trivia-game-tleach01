@@ -20,9 +20,9 @@ class Question extends React.Component {
     answers = answers.concat(question.incorrect_answers)
 
     return (
-      <div className='question'>
-        <div>
-          <h2 dangerouslySetInnerHTML={{ __html: question.question }} />
+      <div>
+        <div className='question'>
+          <h2 className='question' dangerouslySetInnerHTML={{ __html: question.question }} />
         </div>
         <ul>
           {answers.map(answer => (

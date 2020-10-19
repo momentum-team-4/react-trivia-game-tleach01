@@ -42,7 +42,7 @@ class Trivia extends React.Component {
       return (
         <div>
           <h1>{category.name}</h1>
-          <h2>You scored {score}/{questions.length}</h2>
+          <h2 className='score'>You scored {score}/{questions.length}</h2>
           <button
             className='again'
             onClick={this.props.handleBack}
@@ -78,7 +78,7 @@ class Trivia extends React.Component {
             }
           }}
         />
-        <h2> Score: {score} </h2>
+        <h2 className='score'> Score: {score} </h2>
         <div>
           <button
             disabled={!this.state.answered}
